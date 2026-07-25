@@ -1,28 +1,146 @@
-# Movie Rating Aggregator MVP
+# 🎬 Movie Da – MERN Stack Movie Rating Platform
 
-Monorepo with:
-- `frontend`: React + TypeScript + Vite
-- `backend`: Node + TypeScript + Express + Prisma + PostgreSQL
+A modern Full Stack Movie Rating Platform built using the MERN Stack. The application allows users to browse movies, manage favorites and watchlists, and enables administrators to manage movie data through a secure dashboard.
 
-## Quick start
+---
 
-1. Install Node.js 20+ and npm.
-2. Install dependencies:
-   - `npm install`
-3. Configure env files:
-   - `backend/.env` from `backend/.env.example`
-   - `frontend/.env` from `frontend/.env.example`
-4. Run database migration:
-   - `npm run prisma:migrate --workspace backend`
-   - `npm run prisma:seed --workspace backend`
-5. Start dev servers:
-   - `npm run dev`
+## 🚀 Features
 
-## API health
+- 🔐 JWT Authentication (Login & Register)
+- 🎥 Browse Movie Collection
+- ⭐ Add/Remove Favorites
+- 📋 Watchlist Management
+- 👨‍💼 Admin Dashboard
+- ➕ Create, Update & Delete Movies
+- 🔍 Search, Filter & Sorting
+- 📱 Fully Responsive Design
+- 🌙 Dark & Light Theme
+- ⚡ Fast and Interactive User Interface
 
-- `GET /health`
+---
 
-## Deployment
+## 🛠 Tech Stack
 
-- Frontend: Vercel/Netlify
-- Backend + Postgres: Render/Railway/Fly
+### Frontend
+- React.js
+- Vite
+- HTML5
+- CSS3
+- JavaScript
+
+### Backend
+- Node.js
+- Express.js
+
+### Database
+- MongoDB
+- Mongoose
+
+### Authentication
+- JSON Web Token (JWT)
+- bcrypt.js
+
+---
+
+## 📂 Project Structure
+
+```
+movie-da-mern/
+│
+├── client/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
+├── server/
+│   ├── src/
+│   ├── package.json
+│   └── .env
+│
+└── README.md
+```
+
+---
+
+## ✨ Screenshots
+
+### 🏠 Home Page
+(Add Screenshot)
+
+### 🔑 Login
+(Add Screenshot)
+
+### ❤️ Favorites
+(Add Screenshot)
+
+### 👨‍💼 Admin Dashboard
+(Add Screenshot)
+
+---
+
+## ⚙️ Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/Nithyananthan48/movie-da-mern.git
+```
+
+### Install Dependencies
+
+#### Frontend
+
+```bash
+cd client
+npm install
+```
+
+#### Backend
+
+```bash
+cd server
+npm install
+```
+
+### Run Backend
+
+```bash
+npm run dev
+```
+
+### Run Frontend
+
+```bash
+npm run dev
+```
+
+---
+
+## 📌 Future Enhancements
+
+- ⭐ User Reviews
+- 🎬 Movie Recommendations
+- 📺 Trailer Integration
+- 🔔 Notifications
+- ☁️ Cloud Image Upload
+- 🌍 Multi-language Support
+
+---
+
+## 👨‍💻 Developer
+
+**Nithyananthan N**
+
+🎓 MCA Student  
+💻 Full Stack Developer
+
+### Connect with Me
+
+- GitHub: https://github.com/Nithyananthan48
+- LinkedIn: https://www.linkedin.com/in/nithyananthan959794/
+
+---
+
+## 📜 License
+
+This project is developed for educational and portfolio purposes.
