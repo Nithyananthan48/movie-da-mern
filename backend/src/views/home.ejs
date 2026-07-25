@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Aggregator</title>
+    <link rel="stylesheet" href="/static/site.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="/" class="brand">Movie Aggregator</a>
+      <div class="menu">
+        <a href="/">Home</a>
+        <a href="/admin/login">Admin</a>
+        <button id="themeToggle" class="btn ghost" type="button">Toggle Theme</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1>Cinematic ratings in one place</h1>
+      <p>Filter, sort and discover top movies with a richer modern UI.</p>
+    </section>
+
+    <form class="card filters" method="get" action="/">
+      <input name="q" placeholder="Search title" value="<%= filters.q %>" />
+      <select name="genre">
+        <option value="">All genres</option>
+        <% allGenres.forEach(function(g){ %>
+          <option value="<%= g %>" <%= filters.genre===g ? "selected" : "" %>><%= g %></option>
+        <% }) %>
+      </select>
+      <select name="sort">
+        <option value="latest" <%= filters.sort==="latest" ? "selected" : "" %>>Latest</option>
+        <option value="score" <%= filters.sort==="score" ? "selected" : "" %>>Top Score</option>
+        <option value="year" <%= filters.sort==="year" ? "selected" : "" %>>Newest Year</option>
+      </select>
+      <input name="minScore" type="number" min="0" max="100" value="<%= filters.minScore %>" placeholder="Min score" />
+      <button class="btn" type="submit">Apply</button>
+    </form>
+
+    <main class="grid">
+      <% movies.forEach(function(movie){ %>
+        <article class="card movie">
+          <h3><%= movie.title %></h3>
+          <p class="muted"><%= movie.year %></p>
+          <p class="muted"><%= Array.isArray(movie.genres) ? movie.genres.join(", ") : "" %></p>
+          <span class="badge">Score: <%= movie.score ? movie.score.aggregateScore : "N/A" %></span>
+          <a class="btn" href="/movie/<%= movie.id %>">Details</a>
+        </article>
+      <% }) %>
+    </main>
+    <script src="/static/site.js"></script>
+  </body>
+</html>

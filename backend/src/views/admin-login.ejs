@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="/static/site.css" />
+  </head>
+  <body>
+    <header class="topbar"><a href="/" class="brand">Movie Aggregator</a></header>
+    <main class="stack narrow">
+      <section class="hero"><h1>Admin Login</h1><p>Manage movies and ratings.</p></section>
+      <form class="card stack" action="/admin/login" method="post">
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <button class="btn" type="submit">Sign In</button>
+        <% if (error) { %><p class="error"><%= error %></p><% } %>
+      </form>
+    </main>
+    <script src="/static/site.js"></script>
+  </body>
+</html>

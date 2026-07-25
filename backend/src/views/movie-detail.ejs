@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= movie.title %></title>
+    <link rel="stylesheet" href="/static/site.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="/" class="brand">Movie Aggregator</a>
+      <div class="menu"><a href="/">Home</a><a href="/admin/login">Admin</a></div>
+    </header>
+    <section class="hero">
+      <h1><%= movie.title %> (<%= movie.year %>)</h1>
+      <p><%= movie.synopsis || "No synopsis available." %></p>
+      <span class="badge">Aggregate: <%= movie.score ? movie.score.aggregateScore : "N/A" %></span>
+    </section>
+    <section class="card">
+      <h2>Ratings by Source</h2>
+      <ul>
+        <% movie.ratings.forEach(function(r){ %>
+          <li><%= r.source.name %>: <%= r.rawValue %> (<%= r.normalizedValue.toFixed(1) %>/100)</li>
+        <% }) %>
+      </ul>
+    </section>
+    <script src="/static/site.js"></script>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  role         String   @default("admin")
+  createdAt    DateTime @default(now())
+}
+
+model Movie {
+  id          String        @id @default(cuid())
+  title       String
+  year        Int
+  synopsis    String?
+  posterUrl   String?
+  genres      Json
+  runtimeMin  Int?
+  language    String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  ratings     MovieRating[]
+  score       MovieScore?
+}
+
+model RatingSource {
+  id        String        @id @default(cuid())
+  name      String        @unique
+  scaleMax  Float
+  weight    Float
+  isActive  Boolean       @default(true)
+  ratings   MovieRating[]
+}
+
+model MovieRating {
+  id              String       @id @default(cuid())
+  movieId          String
+  sourceId         String
+  rawValue         Float
+  normalizedValue  Float
+  capturedAt       DateTime    @default(now())
+  notes            String?
+  movie            Movie        @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  source           RatingSource @relation(fields: [sourceId], references: [id], onDelete: Restrict)
+
+  @@index([movieId])
+}
+
+model MovieScore {
+  movieId         String   @id
+  aggregateScore  Float
+  voteCount       Int
+  lastComputedAt  DateTime @updatedAt
+  movie           Movie    @relation(fields: [movieId], references: [id], onDelete: Cascade)
+}
